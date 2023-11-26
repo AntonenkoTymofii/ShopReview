@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Product {
+    id
+    id_category
+    name
+    price
+}
+
+class Category {
+    id
+    name
+}
+
+class Shop {
+    id
+    name
+    address
+}
+
+class ProductShop {
+    id
+    id_product
+    id_shop
+    quantity
+}
+
+class User {
+    id
+    hash
+    name
+    email
+    phone
+    discount_card
+}
+
+class UserPurchase {
+    id
+    id_user
+    id_product
+    id_shop
+    price
+    quantity
+    date
+}
+
+@enduml
