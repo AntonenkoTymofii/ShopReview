@@ -1,48 +1,54 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Product {
+entity Product {
     id
     id_category
     name
     price
 }
 
-class Category {
+entity Category {
     id
     name
 }
 
-class Shop {
+entity Shop {
     id
     name
     address
-}
-
-class ProductShop {
-    id
-    id_product
-    id_shop
     quantity
 }
 
-class User {
+entity ProductShop {
+    id
+    id_product
+    id_shop
+}
+
+entity User {
     id
     hash
-    name
+    firstname
+    lastname
     email
     phone
     discount_card
 }
 
-class UserPurchase {
+entity Purchase {
     id
-    id_user
     id_product
     id_shop
     price
     quantity
     date
+}
+
+entity UserPurchase {
+    id
+    id_user
+    id_purchase
 }
 
 @enduml
