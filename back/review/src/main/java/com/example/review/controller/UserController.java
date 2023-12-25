@@ -48,4 +48,16 @@ public class UserController {
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok("Було успішно видалено користувача з id: " +
+                    userService.deleteUser(id));
+        } catch (UserNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
 }

@@ -38,4 +38,12 @@ public class UserService {
         return User.toModel(userEntity);
     }
 
+    public Long deleteUser(Long id) throws UserNotFoundException {
+        if (userRepo.findById(id).isEmpty()){
+            throw new UserNotFoundException("Такого користувача вже не існує");
+        }
+        userRepo.deleteById(id);
+        return id;
+    }
+
 }
