@@ -30,4 +30,12 @@ public class UserService {
         return User.toModel(userEntity);
     }
 
+    public User getByEmail(String email) throws UserNotFoundException {
+        if(userRepo.findByEmail(email) == null) {
+            throw new UserNotFoundException("Такого користувача не найдено");
+        }
+        UserEntity userEntity = userRepo.findByEmail(email);
+        return User.toModel(userEntity);
+    }
+
 }

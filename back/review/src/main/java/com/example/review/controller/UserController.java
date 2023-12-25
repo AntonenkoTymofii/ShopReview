@@ -2,6 +2,7 @@ package com.example.review.controller;
 
 import com.example.review.entity.UserEntity;
 import com.example.review.exception.EmailAlreadyExistException;
+import com.example.review.exception.UserNotFoundException;
 import com.example.review.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,8 @@ public class UserController {
     public ResponseEntity getUserByID(@RequestParam Long id){
         try {
             return ResponseEntity.ok(userService.getByID(id));
+        } catch (UserNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
@@ -38,7 +41,9 @@ public class UserController {
     @GetMapping("/email")
     public ResponseEntity getUserByEmail(@RequestParam String email){
         try {
-            return ResponseEntity.ok("Сервер працює");
+            return ResponseEntity.ok(userService.getByEmail(email));
+        } catch (UserNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
