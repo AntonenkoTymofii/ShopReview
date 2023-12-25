@@ -60,4 +60,17 @@ public class UserController {
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
     }
+
+    @PutMapping
+    public ResponseEntity updateUser(@RequestParam Long id,
+                                     @RequestBody UserEntity user){
+        try {
+            userService.updateUser(id, user);
+            return ResponseEntity.ok("Дані користувача були оновлені успішно");
+        }catch (UserNotFoundException | EmailAlreadyExistException exception) {
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
 }

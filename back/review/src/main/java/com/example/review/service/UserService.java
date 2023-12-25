@@ -8,8 +8,6 @@ import com.example.review.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.SplittableRandom;
-
 @Service
 public class UserService {
     @Autowired
@@ -46,4 +44,20 @@ public class UserService {
         return id;
     }
 
+    public void updateUser(Long id, UserEntity user)
+            throws EmailAlreadyExistException, UserNotFoundException {
+        if(userRepo.findById(id).isEmpty()){
+            throw new UserNotFoundException("Такого користувача не існує");
+        }
+        UserEntity userEntity = userRepo.findById(id).get();
+
+        userEntity.setFirstname(user.getFirstname());
+        userEntity.setLastname(user.getLastname());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPhone(user.getPhone());
+        if (userRepo.findByEmail(userEntity.getEmail()) != null){
+            throw new EmailAlreadyExistException("Користувач з такою електронною поштою вже існує");
+        }
+        userRepo.save(userEntity);
+    }
 }
