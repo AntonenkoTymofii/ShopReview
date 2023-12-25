@@ -26,8 +26,17 @@ public class UserController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity getUser(){
+    @GetMapping("/user")
+    public ResponseEntity getUserByID(@RequestParam Long id){
+        try {
+            return ResponseEntity.ok(userService.getByID(id));
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
+
+    @GetMapping("/email")
+    public ResponseEntity getUserByEmail(@RequestParam String email){
         try {
             return ResponseEntity.ok("Сервер працює");
         } catch (Exception exception){

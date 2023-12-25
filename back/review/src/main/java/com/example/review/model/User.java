@@ -9,7 +9,7 @@ public class User {
     private String email;
     private String phone;
 
-    public User toModel(UserEntity userEntity){
+    public static User toModel(UserEntity userEntity){
         User model = new User();
         model.setId(userEntity.getId());
         model.setFirstname(userEntity.getFirstname());
