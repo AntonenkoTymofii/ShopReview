@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping
-    public ResponseEntity getUser(@RequestParam Long id){
+    public ResponseEntity getUser(){
         try {
             return ResponseEntity.ok("Сервер працює");
         } catch (Exception exception){
