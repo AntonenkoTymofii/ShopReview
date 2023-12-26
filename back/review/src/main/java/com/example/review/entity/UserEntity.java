@@ -3,16 +3,20 @@ package com.example.review.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"User\"")
+@Table(name = "users")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     private String hash;
     private String firstname;
     private String lastname;
     private String email;
     private String phone;
+
+    public UserEntity() {
+    }
 
     public void setId(Long id) {
         this.id = id;

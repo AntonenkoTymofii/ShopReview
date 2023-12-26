@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity registration(@RequestBody UserEntity userEntity){
         try {
-            userService.registrateUser(userEntity);
+            userService.registrationUser(userEntity);
             return ResponseEntity.ok("Користувач зареєстрований");
         } catch (EmailAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
@@ -27,7 +27,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user")
+    @GetMapping("/search")
     public ResponseEntity getUserByID(@RequestParam Long id){
         try {
             return ResponseEntity.ok(userService.getByID(id));

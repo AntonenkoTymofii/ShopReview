@@ -13,7 +13,8 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public void registrateUser(UserEntity userEntity) throws EmailAlreadyExistException {
+    public void registrationUser(UserEntity userEntity)
+            throws EmailAlreadyExistException {
         if (userRepo.findByEmail(userEntity.getEmail()) != null){
             throw new EmailAlreadyExistException("Користувач з такою електронною поштою вже існує");
         }

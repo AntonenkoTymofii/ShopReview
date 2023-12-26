@@ -1,9 +1,10 @@
 package com.example.review.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"Category\"")
+@Table(name = "category")
 public class CategoryEntity {
 
     @Id
