@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e20378d-9585-4388-b912-299805bfbc19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ShopReview.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/ShopReviewDB.DMeSuQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/ShopReviewDB.DMeSuQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/ShopReviewDB.DMeSuQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/ShopReviewDB.DMeSuQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31246f30-3d3b-4ba6-bc05-76f985d1c252/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="8e20378d-9585-4388-b912-299805bfbc19" name="Changes" comment="edit gitignore in main directory">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,11 +97,49 @@
       <workItem from="1702413076513" duration="1364000" />
       <workItem from="1702843208002" duration="1193000" />
       <workItem from="1703093280004" duration="339000" />
-      <workItem from="1703549559737" duration="347000" />
+      <workItem from="1703549559737" duration="698000" />
     </task>
+    <task id="LOCAL-00001" summary="edit gitignore">
+      <option name="closed" value="true" />
+      <created>1703549969643</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703549969643</updated>
+    </task>
+    <task id="LOCAL-00002" summary="edit gitignore">
+      <option name="closed" value="true" />
+      <created>1703549990330</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703549990330</updated>
+    </task>
+    <task id="LOCAL-00003" summary="edit gitignore in main directory">
+      <option name="closed" value="true" />
+      <created>1703550051023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703550051023</updated>
+    </task>
+    <task id="LOCAL-00004" summary="edit gitignore in main directory">
+      <option name="closed" value="true" />
+      <created>1703550125803</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703550125803</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="edit gitignore" />
+    <MESSAGE value="edit gitignore in main directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit gitignore in main directory" />
   </component>
 </project>
