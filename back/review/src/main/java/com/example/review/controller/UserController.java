@@ -1,8 +1,9 @@
 package com.example.review.controller;
 
 import com.example.review.entity.UserEntity;
-import com.example.review.exception.EmailAlreadyExistException;
+import com.example.review.exception.UserEmailAlreadyExistException;
 import com.example.review.exception.UserNotFoundException;
+import com.example.review.exception.UserPhoneAlreadyExistException;
 import com.example.review.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class UserController {
         try {
             userService.registrationUser(userEntity);
             return ResponseEntity.ok("Користувач зареєстрований");
-        } catch (EmailAlreadyExistException exception){
+        } catch (UserEmailAlreadyExistException | UserPhoneAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
@@ -67,7 +68,8 @@ public class UserController {
         try {
             userService.updateUser(id, user);
             return ResponseEntity.ok("Дані користувача були оновлені успішно");
-        }catch (UserNotFoundException | EmailAlreadyExistException exception) {
+        }catch (UserNotFoundException | UserEmailAlreadyExistException |
+                UserPhoneAlreadyExistException exception) {
             return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
