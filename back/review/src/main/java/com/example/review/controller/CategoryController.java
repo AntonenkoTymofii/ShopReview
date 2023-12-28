@@ -1,8 +1,12 @@
 package com.example.review.controller;
 
 import com.example.review.entity.CategoryEntity;
+import com.example.review.entity.UserEntity;
 import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.exception.categoryExceptions.CategoryNotFoundException;
+import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
+import com.example.review.exception.userExceptions.UserNotFoundException;
+import com.example.review.exception.userExceptions.UserPhoneAlreadyExistException;
 import com.example.review.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +53,31 @@ public class CategoryController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCategory(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok("Було успішно видалено категорію з id: " +
+                    categoryService.deleteCategory(id));
+        } catch (CategoryNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
 
-    //TODO: Написати реалізацію CRUD для Category
+    @PutMapping("/edit")
+    public ResponseEntity updateCategory(@RequestParam Long id,
+                                     @RequestBody CategoryEntity category){
+        try {
+            categoryService.updateCategory(id, category);
+            return ResponseEntity.ok("Дані категорії були оновлені успішно");
+        }catch (CategoryNotFoundException |
+                CategoryNameAlreadyExistException exception) {
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
+
+
 }
