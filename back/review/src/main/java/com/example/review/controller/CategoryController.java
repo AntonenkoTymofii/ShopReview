@@ -1,8 +1,7 @@
 package com.example.review.controller;
 
 import com.example.review.entity.CategoryEntity;
-import com.example.review.exception.CategoryNameAlreadyExistException;
-import com.example.review.exception.UserNotFoundException;
+import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

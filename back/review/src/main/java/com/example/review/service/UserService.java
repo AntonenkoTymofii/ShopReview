@@ -1,9 +1,9 @@
 package com.example.review.service;
 
 import com.example.review.entity.UserEntity;
-import com.example.review.exception.UserEmailAlreadyExistException;
-import com.example.review.exception.UserNotFoundException;
-import com.example.review.exception.UserPhoneAlreadyExistException;
+import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
+import com.example.review.exception.userExceptions.UserNotFoundException;
+import com.example.review.exception.userExceptions.UserPhoneAlreadyExistException;
 import com.example.review.model.User;
 import com.example.review.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
