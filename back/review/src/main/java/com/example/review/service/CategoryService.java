@@ -1,14 +1,9 @@
 package com.example.review.service;
 
 import com.example.review.entity.CategoryEntity;
-import com.example.review.entity.UserEntity;
 import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.exception.categoryExceptions.CategoryNotFoundException;
-import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
-import com.example.review.exception.userExceptions.UserNotFoundException;
-import com.example.review.exception.userExceptions.UserPhoneAlreadyExistException;
 import com.example.review.model.Category;
-import com.example.review.model.User;
 import com.example.review.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
