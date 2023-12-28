@@ -6,7 +6,7 @@ public class Category {
     private Long id;
     private String name;
 
-    public Category toModel(CategoryEntity categoryEntity){
+    public static Category toModel(CategoryEntity categoryEntity){
         Category model = new Category();
         model.setId(categoryEntity.getId());
         model.setName(categoryEntity.getName());
