@@ -1,4 +1,4 @@
-package com.example.review.exception;
+package com.example.review.exception.userExceptions;
 
 public class UserEmailAlreadyExistException extends Exception {
     public UserEmailAlreadyExistException(String message) {
