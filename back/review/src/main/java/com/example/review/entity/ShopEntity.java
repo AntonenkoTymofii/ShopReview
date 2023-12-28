@@ -1,11 +1,10 @@
 package com.example.review.entity;
 
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "shop")
+public class ShopEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +12,8 @@ public class CategoryEntity {
     private Long id;
 
     private String name;
+    private String address;
+    private int quantity;
 
     public void setId(Long id) {
         this.id = id;
@@ -28,5 +29,21 @@ public class CategoryEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
