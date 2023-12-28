@@ -1,25 +1,31 @@
-package com.example.review.entity;
+package com.example.review.model;
 
-import jakarta.persistence.*;
+import com.example.review.entity.ShopEntity;
 
-@Entity
-@Table(name = "shop")
-public class ShopEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class Shop {
     private Long id;
     private String name;
     private String address;
     private int quantity;
 
-    public void setId(Long id) {
-        this.id = id;
+    public static Shop toModel(ShopEntity shopEntity){
+        Shop model = new Shop();
+        model.setId(shopEntity.getId());
+        model.setName(shopEntity.getName());
+        model.setAddress(shopEntity.getAddress());
+        model.setQuantity(shopEntity.getQuantity());
+        return model;
+    }
+
+    public Shop() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
