@@ -4,7 +4,9 @@ import com.example.review.entity.CategoryEntity;
 import com.example.review.entity.UserEntity;
 import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.exception.categoryExceptions.CategoryNotFoundException;
+import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
 import com.example.review.exception.userExceptions.UserNotFoundException;
+import com.example.review.exception.userExceptions.UserPhoneAlreadyExistException;
 import com.example.review.model.Category;
 import com.example.review.model.User;
 import com.example.review.repository.CategoryRepo;
@@ -41,5 +43,27 @@ public class CategoryService {
         }
         CategoryEntity categoryEntity = categoryRepo.findByName(name);
         return Category.toModel(categoryEntity);
+    }
+
+    public Long deleteCategory(Long id) throws CategoryNotFoundException {
+        if (categoryRepo.findById(id).isEmpty()){
+            throw new CategoryNotFoundException("Такої категорії вже не існує");
+        }
+        categoryRepo.deleteById(id);
+        return id;
+    }
+
+    public void updateCategory(Long id, CategoryEntity category)
+            throws CategoryNotFoundException, CategoryNameAlreadyExistException {
+        if(categoryRepo.findById(id).isEmpty()){
+            throw new CategoryNotFoundException("Такої категорії не існує");
+        }
+        CategoryEntity categoryEntity = categoryRepo.findById(id).get();
+
+        categoryEntity.setName(category.getName());
+        if (categoryRepo.findByName(categoryEntity.getName()) != null) {
+            throw new CategoryNameAlreadyExistException("Категорія з таким ім'ям існує");
+        }
+        categoryRepo.save(categoryEntity);
     }
 }

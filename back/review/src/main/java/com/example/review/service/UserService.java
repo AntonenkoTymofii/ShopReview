@@ -24,6 +24,8 @@ public class UserService {
         userRepo.save(userEntity);
     }
 
+    //TODO: Do something with password hashing.
+
     public User getByID(Long id) throws UserNotFoundException {
         if(userRepo.findById(id).isEmpty()) {
             throw new UserNotFoundException("Такого користувача не найдено");
