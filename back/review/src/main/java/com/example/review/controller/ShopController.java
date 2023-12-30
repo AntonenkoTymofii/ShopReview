@@ -53,7 +53,10 @@ public class ShopController {
     public ResponseEntity editShopInfo(@RequestParam Long id,
                                        @RequestBody ShopEntity shopEntity){
         try {
-            return ResponseEntity.ok("Дані про магазин були успішно додані");
+            shopService.editShopInfo(id, shopEntity);
+            return ResponseEntity.ok("Дані про магазин були успішно оновлені");
+        } catch (ShopNotFoundException | ShopNameAlreadyExistException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }

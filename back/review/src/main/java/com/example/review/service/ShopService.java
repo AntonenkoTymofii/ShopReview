@@ -43,5 +43,29 @@ public class ShopService {
         return Shop.toModel(shopEntity);
     }
 
+    public void editShopInfo(Long id, ShopEntity shopEntity)
+            throws ShopNotFoundException, ShopNameAlreadyExistException {
+
+        if (shopRepo.findById(id).isEmpty()){
+            throw new ShopNotFoundException(
+                    "Магазину не найдено"
+            );
+        }
+
+        ShopEntity shop = shopRepo.findById(id).get();
+        shop.setName(shopEntity.getName());
+        shop.setAddress(shopEntity.getAddress());
+        shop.setQuantity(shopEntity.getQuantity());
+
+        if (shopRepo.findByName(shop.getName()) != null) {
+            throw new ShopNameAlreadyExistException(
+                    "Магазин з такою назвою вже існує"
+            );
+        }
+
+        shopRepo.save(shop);
+    }
+
+
 
 }
