@@ -23,10 +23,19 @@ public class ShopController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity getShop(){
+    @GetMapping("/search/name")
+    public ResponseEntity getShopByName(@RequestParam String name){
         try {
-            return ResponseEntity.ok("Сервіс працює");
+            return ResponseEntity.ok(shopService.getByName(name));
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity getShopById(@RequestParam Long id){
+        try {
+            return ResponseEntity.ok(shopService.getById(id));
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
