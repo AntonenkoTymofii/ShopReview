@@ -61,4 +61,16 @@ public class ShopController {
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteShop(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok("Було успішно видалено інформацію" +
+                    " про магазин з іd: " + shopService.deleteShop(id));
+        } catch (ShopNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
 }

@@ -66,6 +66,14 @@ public class ShopService {
         shopRepo.save(shop);
     }
 
-
+    public Long deleteShop(Long id) throws ShopNotFoundException {
+        if (shopRepo.findById(id).isEmpty()){
+            throw new ShopNotFoundException(
+                    "Магазину не найдено"
+            );
+        }
+        shopRepo.deleteById(id);
+        return id;
+    }
 
 }
