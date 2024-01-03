@@ -28,9 +28,12 @@ public class ProductService {
         return Product.toModel(productEntity);
     }
 
-//    public List<Product> getProductByName(ProductEntity productEntity) {
-//        productRepo.save(productEntity);
-//    }
+    public List<ProductEntity> getProductByName(String name) throws ProductNotFoundException {
+        if(productRepo.findByName(name).isEmpty()) {
+            throw new ProductNotFoundException("Такого продукта/продуктів не найдено");
+        }
+        return productRepo.findByName(name);
+    }
 
 
 }

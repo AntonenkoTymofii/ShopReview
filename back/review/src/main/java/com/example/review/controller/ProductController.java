@@ -1,6 +1,7 @@
 package com.example.review.controller;
 
 import com.example.review.entity.ProductEntity;
+import com.example.review.exception.productExceptions.ProductNotFoundException;
 import com.example.review.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,17 +28,21 @@ public class ProductController {
     public ResponseEntity getProductById(@RequestParam Long id){
         try {
             return ResponseEntity.ok(productService.getProductById(id));
+        } catch (ProductNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
         }
     }
 
-//    @GetMapping("/name")
-//    public ResponseEntity getProductByName(@RequestParam String name){
-//        try {
-//            return ResponseEntity.ok("Сервер працює");
-//        } catch (Exception exception){
-//            return ResponseEntity.badRequest().body("Відбулась помилка");
-//        }
-//    }
+    @GetMapping("/name")
+    public ResponseEntity getProductByName(@RequestParam String name){
+        try {
+            return ResponseEntity.ok(productService.getProductByName(name));
+        } catch (ProductNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
 }
