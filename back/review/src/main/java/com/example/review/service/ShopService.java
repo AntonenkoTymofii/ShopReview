@@ -1,7 +1,6 @@
 package com.example.review.service;
 
 import com.example.review.entity.ShopEntity;
-import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.exception.shopException.ShopNameAlreadyExistException;
 import com.example.review.exception.shopException.ShopNotFoundException;
 import com.example.review.model.Shop;

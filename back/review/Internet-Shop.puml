@@ -3,7 +3,6 @@
 
 entity Product {
     id
-    id_category
     name
     price
 }
