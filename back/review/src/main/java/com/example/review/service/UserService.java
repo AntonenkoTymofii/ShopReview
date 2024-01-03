@@ -21,10 +21,9 @@ public class UserService {
         } else if (userRepo.findByPhone(userEntity.getPhone()) != null) {
             throw new UserPhoneAlreadyExistException("Користувач з таким номером телефону вже існує");
         }
+        //TODO: Do hashing md5 and salt hash
         userRepo.save(userEntity);
     }
-
-    //TODO: Do something with password hashing.
 
     public User getByID(Long id) throws UserNotFoundException {
         if(userRepo.findById(id).isEmpty()) {
