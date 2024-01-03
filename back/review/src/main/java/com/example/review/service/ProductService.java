@@ -30,10 +30,17 @@ public class ProductService {
 
     public List<ProductEntity> getProductByName(String name) throws ProductNotFoundException {
         if(productRepo.findByName(name).isEmpty()) {
-            throw new ProductNotFoundException("Такого продукта/продуктів не найдено");
+            throw new ProductNotFoundException("Продукта/продукти не найдено");
         }
         return productRepo.findByName(name);
     }
 
-
+    public Long deleteProduct(Long id)
+            throws ProductNotFoundException {
+        if(productRepo.findById(id).isEmpty()) {
+            throw new ProductNotFoundException("Такого продукта вже не існує");
+        }
+        productRepo.deleteById(id);
+        return id;
+    }
 }
