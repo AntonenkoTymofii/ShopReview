@@ -21,7 +21,6 @@ create table if not exists "ShopReviewDB"."public"."category"(
 
 create table if not exists "ShopReviewDB"."public"."product"(
     id BIGINT PRIMARY KEY NOT NULL,
-    id_category BIGINT REFERENCES "category"(id) NOT NULL,
     name VARCHAR(120) NOT NULL,
     price FLOAT NOT NULL
 );
