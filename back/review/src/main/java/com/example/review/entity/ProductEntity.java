@@ -9,7 +9,7 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private float price;
+    private Float price;
 
     public void setId(Long id) {
         this.id = id;
@@ -27,11 +27,11 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 }
