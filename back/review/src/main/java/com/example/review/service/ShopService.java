@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShopService {
     @Autowired
-    ShopRepo shopRepo;
+    private ShopRepo shopRepo;
 
     public void addShop(ShopEntity shopEntity) throws ShopNameAlreadyExistException {
         if (shopRepo.findByName(shopEntity.getName()) != null){

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class ShopController {
 
     @Autowired
-    ShopService shopService;
+    private ShopService shopService;
 
     @PostMapping("/create")
     public ResponseEntity createShop(@RequestBody ShopEntity shopEntity){
