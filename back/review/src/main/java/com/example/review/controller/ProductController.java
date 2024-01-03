@@ -1,7 +1,6 @@
 package com.example.review.controller;
 
 import com.example.review.entity.ProductEntity;
-import com.example.review.exception.categoryExceptions.CategoryNotFoundException;
 import com.example.review.exception.productExceptions.ProductNotFoundException;
 import com.example.review.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +52,19 @@ public class ProductController {
             return ResponseEntity.ok("Було успішно видалено продукт з id: " +
                     productService.deleteProduct(id));
         } catch (ProductNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
+
+    @PutMapping("/edit")
+    public ResponseEntity updateProduct(@RequestParam Long id,
+                                         @RequestBody ProductEntity productEntity){
+        try {
+            productService.updateProduct(id, productEntity);
+            return ResponseEntity.ok("Дані продукту були оновлені успішно");
+        }catch (ProductNotFoundException exception) {
             return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");

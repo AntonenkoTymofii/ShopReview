@@ -43,4 +43,16 @@ public class ProductService {
         productRepo.deleteById(id);
         return id;
     }
+
+    public void updateProduct(Long id, ProductEntity product)
+            throws ProductNotFoundException {
+        if(productRepo.findById(id).isEmpty()){
+            throw new ProductNotFoundException("Такого продукта не існує");
+        }
+        ProductEntity productEntity = productRepo.findById(id).get();
+
+        productEntity.setName(product.getName());
+        productEntity.setPrice(product.getPrice());
+        productRepo.save(productEntity);
+    }
 }
