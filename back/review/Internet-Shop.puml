@@ -50,4 +50,12 @@ entity UserPurchase {
     id_purchase
 }
 
+entity ProductCategory {
+    id
+    id_product
+    id_category
+}
+
+
+
 @enduml
