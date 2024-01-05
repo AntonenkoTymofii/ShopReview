@@ -2,6 +2,8 @@ package com.example.review.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "shop")
 public class ShopEntity {
@@ -13,6 +15,9 @@ public class ShopEntity {
     private String name;
     private String address;
     private int quantity;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
+    private ArrayList<PurchaseEntity> purchases;
 
     public void setId(Long id) {
         this.id = id;

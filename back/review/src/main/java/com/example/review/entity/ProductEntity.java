@@ -11,6 +11,9 @@ public class ProductEntity {
     private String name;
     private Float price;
 
+//    @ManyToOne
+//    private PurchaseEntity purchase;
+
     public void setId(Long id) {
         this.id = id;
     }
