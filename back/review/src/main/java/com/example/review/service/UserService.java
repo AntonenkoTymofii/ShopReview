@@ -21,7 +21,7 @@ public class UserService {
         } else if (userRepo.findByPhone(userEntity.getPhone()) != null) {
             throw new UserPhoneAlreadyExistException("Користувач з таким номером телефону вже існує");
         }
-        //TODO: Do hashing md5 and salt hash
+        //TODO: Do hashing md5 and salt 16 symbols hash
         userRepo.save(userEntity);
     }
 
