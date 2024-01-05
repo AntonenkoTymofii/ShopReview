@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Table(name = "purchase")
@@ -16,10 +18,13 @@ public class PurchaseEntity {
     private Integer quantity;
     private Date date = Date.valueOf(LocalDate.now());
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "purchase")
-//    @JoinColumn(name = "id_product")
-//    private List<ProductEntity> products;
-//    @ManyToMany
+    @ManyToMany
+    @JoinTable(
+            name = "purchaseProduct",
+            joinColumns = @JoinColumn(name = "id_purchase"),
+            inverseJoinColumns = @JoinColumn(name = "id_product")
+    )
+    private Set<ProductEntity> products;
 
     @ManyToOne
     @JoinColumn(name = "id_shop")
@@ -34,5 +39,45 @@ public class PurchaseEntity {
 
     public Long getId() {
         return id;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public ShopEntity getShop() {
+        return shop;
+    }
+
+    public void setShop(ShopEntity shop) {
+        this.shop = shop;
+    }
+
+    public Set<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<ProductEntity> products) {
+        this.products = products;
     }
 }

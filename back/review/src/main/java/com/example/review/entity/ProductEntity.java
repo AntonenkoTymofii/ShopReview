@@ -2,6 +2,8 @@ package com.example.review.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "product")
 public class ProductEntity {
@@ -11,8 +13,8 @@ public class ProductEntity {
     private String name;
     private Float price;
 
-//    @ManyToOne
-//    private PurchaseEntity purchase;
+    @ManyToMany
+    private Set<PurchaseEntity> purchases;
 
     public void setId(Long id) {
         this.id = id;
@@ -36,5 +38,13 @@ public class ProductEntity {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Set<PurchaseEntity> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(Set<PurchaseEntity> purchases) {
+        this.purchases = purchases;
     }
 }
