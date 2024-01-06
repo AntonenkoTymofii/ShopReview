@@ -3,6 +3,8 @@ package com.example.review.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "category")
 public class CategoryEntity {
@@ -11,6 +13,14 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
+    @ManyToMany
+    @JoinTable(
+            name = "productCategory",
+            joinColumns = @JoinColumn(name = "id_category"),
+            inverseJoinColumns = @JoinColumn(name = "id_product")
+    )
+    private Set<ProductEntity> products;
 
     private String name;
 
@@ -28,5 +38,13 @@ public class CategoryEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<ProductEntity> products) {
+        this.products = products;
     }
 }
