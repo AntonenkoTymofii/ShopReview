@@ -32,6 +32,7 @@ public class UserController {
     public ResponseEntity getUserByID(@RequestParam Long id){
         try {
             return ResponseEntity.ok(userService.getByID(id));
+            //TODO: додати метод видаленя хеша.
         } catch (UserNotFoundException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){

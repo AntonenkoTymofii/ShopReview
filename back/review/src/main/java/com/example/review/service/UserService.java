@@ -9,6 +9,9 @@ import com.example.review.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 @Service
 public class UserService {
     @Autowired
@@ -21,7 +24,7 @@ public class UserService {
         } else if (userRepo.findByPhone(userEntity.getPhone()) != null) {
             throw new UserPhoneAlreadyExistException("Користувач з таким номером телефону вже існує");
         }
-        //TODO: Do hashing md5 and salt 16 symbols hash
+        userEntity.setHash(getMD5Hash(userEntity.getHash()));
         userRepo.save(userEntity);
     }
 
@@ -67,5 +70,23 @@ public class UserService {
             throw new UserPhoneAlreadyExistException("Користувач з таким номером телефону вже існує");
         }
         userRepo.save(userEntity);
+    }
+
+    private String getMD5Hash(String password){
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] inputBytes = password.getBytes();
+            md.update(inputBytes);
+            byte[] mdBytes = md.digest();
+            StringBuilder result = new StringBuilder();
+            for (byte mdByte : mdBytes) {
+                result.append(Integer.toString((mdByte & 0xff) + 0x100, 16)
+                        .substring(1));
+            }
+
+            return result.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

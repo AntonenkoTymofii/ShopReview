@@ -1,10 +1,12 @@
 package com.example.review.entity;
 
+import com.example.review.model.User;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

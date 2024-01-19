@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProductRepo extends CrudRepository<ProductEntity, Long> {
     List<ProductEntity> findByName(String name);
+    List<ProductEntity> findByPurchasesId(Long PurchasesId);
 }

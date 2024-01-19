@@ -18,6 +18,8 @@ public class User {
         model.setPhone(userEntity.getPhone());
         return model;
     }
+    //TODO: Видалити моделі та перетворити ентеті в модель
+
     public User() {
     }
 
