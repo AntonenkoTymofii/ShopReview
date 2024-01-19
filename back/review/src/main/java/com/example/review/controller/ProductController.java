@@ -1,6 +1,6 @@
 package com.example.review.controller;
 
-import com.example.review.entity.ProductEntity;
+import com.example.review.model.ProductModel;
 import com.example.review.exception.productExceptions.ProductNotFoundException;
 import com.example.review.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,9 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/add")
-    public ResponseEntity createProduct(@RequestBody ProductEntity productEntity){
+    public ResponseEntity createProduct(@RequestBody ProductModel productModel){
         try {
-            productService.createProduct(productEntity);
+            productService.createProduct(productModel);
             return ResponseEntity.ok("Продукт було успішно створено");
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
@@ -60,9 +60,9 @@ public class ProductController {
 
     @PutMapping("/edit")
     public ResponseEntity updateProduct(@RequestParam Long id,
-                                         @RequestBody ProductEntity productEntity){
+                                         @RequestBody ProductModel productModel){
         try {
-            productService.updateProduct(id, productEntity);
+            productService.updateProduct(id, productModel);
             return ResponseEntity.ok("Дані продукту були оновлені успішно");
         }catch (ProductNotFoundException exception) {
             return ResponseEntity.badRequest().body(exception.getMessage());

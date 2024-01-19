@@ -1,11 +1,10 @@
-package com.example.review.entity;
+package com.example.review.model;
 
-import com.example.review.model.User;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +16,18 @@ public class UserEntity {
     private String email;
     private String phone;
 
-    public UserEntity() {
+    public static UserModel toModel(UserModel userModel){
+        UserModel model = new UserModel();
+        model.setId(userModel.getId());
+        model.setFirstname(userModel.getFirstname());
+        model.setLastname(userModel.getLastname());
+        model.setEmail(userModel.getEmail());
+        model.setPhone(userModel.getPhone());
+        model.setHash(null);
+        return model;
+    }
+
+    public UserModel() {
     }
 
     public void setId(Long id) {

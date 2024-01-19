@@ -1,4 +1,4 @@
-package com.example.review.entity;
+package com.example.review.model;
 
 import jakarta.persistence.*;
 
@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "purchase")
-public class PurchaseEntity {
+public class PurchaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,13 +23,25 @@ public class PurchaseEntity {
             joinColumns = @JoinColumn(name = "id_purchase"),
             inverseJoinColumns = @JoinColumn(name = "id_product")
     )
-    private Set<ProductEntity> products;
+    private Set<ProductModel> products;
 
     @ManyToOne
     @JoinColumn(name = "id_shop")
-    private ShopEntity shop;
+    private ShopModel shop;
 
-    public PurchaseEntity() {
+
+    public static PurchaseModel toModel(PurchaseModel purchaseModel){
+        PurchaseModel model = new PurchaseModel();
+        model.setId(purchaseModel.getId());
+        model.setQuantity(purchaseModel.getQuantity());
+        model.setPrice(purchaseModel.getPrice());
+        model.setDate(purchaseModel.getDate());
+        model.setProducts(purchaseModel.getProducts());
+        model.setShop(purchaseModel.getShop());
+        return model;
+    }
+
+    public PurchaseModel() {
     }
 
     public void setId(Long id) {
@@ -64,19 +76,19 @@ public class PurchaseEntity {
         this.date = date;
     }
 
-    public ShopEntity getShop() {
+    public ShopModel getShop() {
         return shop;
     }
 
-    public void setShop(ShopEntity shop) {
+    public void setShop(ShopModel shop) {
         this.shop = shop;
     }
 
-    public Set<ProductEntity> getProducts() {
+    public Set<ProductModel> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<ProductEntity> products) {
+    public void setProducts(Set<ProductModel> products) {
         this.products = products;
     }
 }

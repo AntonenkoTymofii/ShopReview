@@ -1,8 +1,7 @@
 package com.example.review.service;
 
-import com.example.review.entity.ProductEntity;
+import com.example.review.model.ProductModel;
 import com.example.review.exception.productExceptions.ProductNotFoundException;
-import com.example.review.model.Product;
 import com.example.review.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,20 +14,20 @@ public class ProductService {
     @Autowired
     private ProductRepo productRepo;
 
-    public void createProduct(ProductEntity productEntity) {
-        productRepo.save(productEntity);
+    public void createProduct(ProductModel productModel) {
+        productRepo.save(productModel);
     }
 
-    public Product getProductById(Long id)
+    public ProductModel getProductById(Long id)
             throws ProductNotFoundException {
         if(productRepo.findById(id).isEmpty()) {
             throw new ProductNotFoundException("Такого продукта не найдено");
         }
-        ProductEntity productEntity = productRepo.findById(id).get();
-        return Product.toModel(productEntity);
+        ProductModel productModel = productRepo.findById(id).get();
+        return ProductModel.toModel(productModel);
     }
 
-    public List<ProductEntity> getProductByName(String name) throws ProductNotFoundException {
+    public List<ProductModel> getProductByName(String name) throws ProductNotFoundException {
         if(productRepo.findByName(name).isEmpty()) {
             throw new ProductNotFoundException("Продукта/продукти не найдено");
         }
@@ -44,15 +43,15 @@ public class ProductService {
         return id;
     }
 
-    public void updateProduct(Long id, ProductEntity product)
+    public void updateProduct(Long id, ProductModel product)
             throws ProductNotFoundException {
         if(productRepo.findById(id).isEmpty()){
             throw new ProductNotFoundException("Такого продукта не існує");
         }
-        ProductEntity productEntity = productRepo.findById(id).get();
+        ProductModel productModel = productRepo.findById(id).get();
 
-        productEntity.setName(product.getName());
-        productEntity.setPrice(product.getPrice());
-        productRepo.save(productEntity);
+        productModel.setName(product.getName());
+        productModel.setPrice(product.getPrice());
+        productRepo.save(productModel);
     }
 }

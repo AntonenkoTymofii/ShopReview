@@ -1,4 +1,4 @@
-package com.example.review.entity;
+package com.example.review.model;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "category")
-public class CategoryEntity {
+public class CategoryModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,9 +20,18 @@ public class CategoryEntity {
             joinColumns = @JoinColumn(name = "id_category"),
             inverseJoinColumns = @JoinColumn(name = "id_product")
     )
-    private Set<ProductEntity> products;
+    private Set<ProductModel> products;
 
     private String name;
+
+    public static CategoryModel toModel(CategoryModel categoryModel){
+        CategoryModel model = new CategoryModel();
+        model.setId(categoryModel.getId());
+        model.setName(categoryModel.getName());
+        return model;
+    }
+
+    public CategoryModel(){}
 
     public void setId(Long id) {
         this.id = id;
@@ -40,11 +49,11 @@ public class CategoryEntity {
         this.name = name;
     }
 
-    public Set<ProductEntity> getProducts() {
+    public Set<ProductModel> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<ProductEntity> products) {
+    public void setProducts(Set<ProductModel> products) {
         this.products = products;
     }
 }

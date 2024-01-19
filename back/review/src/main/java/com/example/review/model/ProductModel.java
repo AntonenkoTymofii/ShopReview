@@ -1,4 +1,4 @@
-package com.example.review.entity;
+package com.example.review.model;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "product")
-public class ProductEntity {
+public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,13 +14,24 @@ public class ProductEntity {
     private Float price;
 
     @ManyToMany(mappedBy = "products")
-    private Set<PurchaseEntity> purchases;
+    private Set<PurchaseModel> purchases;
 
     @ManyToMany(mappedBy = "products")
-    private Set<CategoryEntity> categories;
+    private Set<CategoryModel> categories;
 
     @ManyToMany(mappedBy = "products")
-    private Set<ShopEntity> shops;
+    private Set<ShopModel> shops;
+
+    public static ProductModel toModel(ProductModel productModel){
+        ProductModel model = new ProductModel();
+        model.setId(productModel.getId());
+        model.setName(productModel.getName());
+        model.setPrice(productModel.getPrice());
+        return model;
+    }
+
+    public ProductModel() {
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -46,27 +57,27 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public Set<PurchaseEntity> getPurchases() {
+    public Set<PurchaseModel> getPurchases() {
         return purchases;
     }
 
-    public void setPurchases(Set<PurchaseEntity> purchases) {
+    public void setPurchases(Set<PurchaseModel> purchases) {
         this.purchases = purchases;
     }
 
-    public Set<CategoryEntity> getCategories() {
+    public Set<CategoryModel> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<CategoryEntity> categories) {
+    public void setCategories(Set<CategoryModel> categories) {
         this.categories = categories;
     }
 
-    public Set<ShopEntity> getShops() {
+    public Set<ShopModel> getShops() {
         return shops;
     }
 
-    public void setShops(Set<ShopEntity> shops) {
+    public void setShops(Set<ShopModel> shops) {
         this.shops = shops;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.review.controller;
 
-import com.example.review.entity.ShopEntity;
+import com.example.review.model.ShopModel;
 import com.example.review.exception.shopException.ShopNameAlreadyExistException;
 import com.example.review.exception.shopException.ShopNotFoundException;
 import com.example.review.service.ShopService;
@@ -16,9 +16,9 @@ public class ShopController {
     private ShopService shopService;
 
     @PostMapping("/create")
-    public ResponseEntity createShop(@RequestBody ShopEntity shopEntity){
+    public ResponseEntity createShop(@RequestBody ShopModel shopModel){
         try {
-            shopService.addShop(shopEntity);
+            shopService.addShop(shopModel);
             return ResponseEntity.ok("Магазин успішно додано");
         } catch (ShopNameAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
@@ -51,9 +51,9 @@ public class ShopController {
 
     @PutMapping("/edit")
     public ResponseEntity editShopInfo(@RequestParam Long id,
-                                       @RequestBody ShopEntity shopEntity){
+                                       @RequestBody ShopModel shopModel){
         try {
-            shopService.editShopInfo(id, shopEntity);
+            shopService.editShopInfo(id, shopModel);
             return ResponseEntity.ok("Дані про магазин були успішно оновлені");
         } catch (ShopNotFoundException | ShopNameAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());

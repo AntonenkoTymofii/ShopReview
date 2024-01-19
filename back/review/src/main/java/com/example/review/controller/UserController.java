@@ -1,6 +1,6 @@
 package com.example.review.controller;
 
-import com.example.review.entity.UserEntity;
+import com.example.review.model.UserModel;
 import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
 import com.example.review.exception.userExceptions.UserNotFoundException;
 import com.example.review.exception.userExceptions.UserPhoneAlreadyExistException;
@@ -17,9 +17,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity registration(@RequestBody UserEntity userEntity){
+    public ResponseEntity registration(@RequestBody UserModel userModel){
         try {
-            userService.registrationUser(userEntity);
+            userService.registrationUser(userModel);
             return ResponseEntity.ok("Користувач зареєстрований");
         } catch (UserEmailAlreadyExistException | UserPhoneAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
@@ -65,7 +65,7 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity updateUser(@RequestParam Long id,
-                                     @RequestBody UserEntity user){
+                                     @RequestBody UserModel user){
         try {
             userService.updateUser(id, user);
             return ResponseEntity.ok("Дані користувача були оновлені успішно");

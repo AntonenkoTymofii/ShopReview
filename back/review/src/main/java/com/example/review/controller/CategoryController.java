@@ -1,6 +1,6 @@
 package com.example.review.controller;
 
-import com.example.review.entity.CategoryEntity;
+import com.example.review.model.CategoryModel;
 import com.example.review.exception.categoryExceptions.CategoryNameAlreadyExistException;
 import com.example.review.exception.categoryExceptions.CategoryNotFoundException;
 import com.example.review.service.CategoryService;
@@ -16,9 +16,9 @@ public class CategoryController {
     private CategoryService categoryService;
     @PostMapping("/create")
     public ResponseEntity createCategory(@RequestBody
-                                             CategoryEntity categoryEntity){
+                                         CategoryModel categoryModel){
         try {
-            categoryService.createCategory(categoryEntity);
+            categoryService.createCategory(categoryModel);
             return ResponseEntity.ok("Категорія створена");
         } catch (CategoryNameAlreadyExistException exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
@@ -63,7 +63,7 @@ public class CategoryController {
 
     @PutMapping("/edit")
     public ResponseEntity updateCategory(@RequestParam Long id,
-                                     @RequestBody CategoryEntity category){
+                                     @RequestBody CategoryModel category){
         try {
             categoryService.updateCategory(id, category);
             return ResponseEntity.ok("Дані категорії були оновлені успішно");
