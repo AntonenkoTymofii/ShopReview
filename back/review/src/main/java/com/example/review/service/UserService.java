@@ -1,5 +1,6 @@
 package com.example.review.service;
 
+import com.example.review.exception.userExceptions.NotCorrectPasswordExeption;
 import com.example.review.model.UserModel;
 import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
 import com.example.review.exception.userExceptions.UserNotFoundException;
@@ -41,6 +42,17 @@ public class UserService {
         UserModel userModel = userRepo.findByEmail(email);
         return UserModel.toModel(userModel);
     }
+    public UserModel authorizationUser(String email, String password) throws UserNotFoundException,
+            NotCorrectPasswordExeption {
+        if(userRepo.findByEmail(email) == null) {
+            throw new UserNotFoundException("Такого користувача не найдено");
+        }
+        UserModel userModel = userRepo.findByEmail(email);
+        if (!userModel.getHash().equals(getMD5Hash(password))){
+            throw new NotCorrectPasswordExeption("Невірно введений пароль");
+        }
+        return UserModel.toModel(userModel);
+    }
 
     public Long deleteUser(Long id) throws UserNotFoundException {
         if (userRepo.findById(id).isEmpty()){
@@ -70,7 +82,7 @@ public class UserService {
         userRepo.save(userModel);
     }
 
-    private String getMD5Hash(String password){
+    public String getMD5Hash(String password){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] inputBytes = password.getBytes();

@@ -1,5 +1,6 @@
 package com.example.review.controller;
 
+import com.example.review.exception.userExceptions.NotCorrectPasswordExeption;
 import com.example.review.model.UserModel;
 import com.example.review.exception.userExceptions.UserEmailAlreadyExistException;
 import com.example.review.exception.userExceptions.UserNotFoundException;
@@ -32,8 +33,19 @@ public class UserController {
     public ResponseEntity getUserByID(@RequestParam Long id){
         try {
             return ResponseEntity.ok(userService.getByID(id));
-            //TODO: додати метод видаленя хеша.
         } catch (UserNotFoundException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        } catch (Exception exception){
+            return ResponseEntity.badRequest().body("Відбулась помилка");
+        }
+    }
+
+    @GetMapping("/authorization")
+    public ResponseEntity authorizationUser(@RequestParam String email,
+                                            @RequestParam String password){
+        try {
+            return ResponseEntity.ok(userService.authorizationUser(email, password));
+        } catch (UserNotFoundException | NotCorrectPasswordExeption exception){
             return ResponseEntity.badRequest().body(exception.getMessage());
         } catch (Exception exception){
             return ResponseEntity.badRequest().body("Відбулась помилка");
