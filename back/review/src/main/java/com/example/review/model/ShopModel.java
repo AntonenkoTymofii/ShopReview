@@ -14,8 +14,13 @@ public class ShopModel {
     @Column(name = "id")
     private Long id;
     private String name;
-    private String address;
     private int quantity;
+    private String country;
+    private String city;
+    private String street;
+    private String house;
+
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
     private ArrayList<PurchaseModel> purchases;
@@ -32,7 +37,10 @@ public class ShopModel {
         ShopModel model = new ShopModel();
         model.setId(shopModel.getId());
         model.setName(shopModel.getName());
-        model.setAddress(shopModel.getAddress());
+        model.setCountry(shopModel.getCountry());
+        model.setCity(shopModel.getCity());
+        model.setStreet(shopModel.getStreet());
+        model.setHouse(shopModel.getHouse());
         model.setQuantity(shopModel.getQuantity());
         return model;
     }
@@ -54,14 +62,6 @@ public class ShopModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public int getQuantity() {
@@ -86,5 +86,37 @@ public class ShopModel {
 
     public void setProducts(Set<ProductModel> products) {
         this.products = products;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouse() {
+        return house;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
     }
 }

@@ -52,7 +52,10 @@ public class ShopService {
 
         ShopModel shop = shopRepo.findById(id).get();
         shop.setName(shopModel.getName());
-        shop.setAddress(shopModel.getAddress());
+        shop.setCountry(shopModel.getCountry());
+        shop.setCity(shopModel.getCity());
+        shop.setStreet(shopModel.getStreet());
+        shop.setHouse(shopModel.getHouse());
         shop.setQuantity(shopModel.getQuantity());
 
         if (shopRepo.findByName(shop.getName()) != null) {
